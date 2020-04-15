@@ -9,6 +9,8 @@ class MainActivity : AppCompatActivity(),MyInterface {
     override val prop: Int
         get() = 456789
 
+    private val da :DataBean by lazy { DataBean("",0) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,6 +31,21 @@ class MainActivity : AppCompatActivity(),MyInterface {
         foo()
         propertyWithImplementation
         Log.i("gzy", "$propertyWithImplementation")
+
+        // data 类型测试
+        val mList = mutableListOf<DataBean>()
+        for (i in 0..10) {
+            val bean = DataBean("curr $i", i)
+            mList.add(bean)
+        }
+        Log.i("gzy","mList 的长度为 ${mList.size} mList 的第三个元素年龄为 ${mList[2].age} 姓名为 ${mList[2].name}")
+
+        // map 的使用方式  常用的集合类型 map set list  用法几乎与 java 相同
+        val mMap = mutableMapOf<String,String>()
+        mMap["1"] = "11111"
+        mMap["2"] = "22222"
+        mMap["3"] = "33333"
+        Log.i("gzy", "mMap 测试结果 长度 = ${mMap.size}  第二个元素的value 为 = ${mMap["2"]}")
     }
 
     // 定义函数
