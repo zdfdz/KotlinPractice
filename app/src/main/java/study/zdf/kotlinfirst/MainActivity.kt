@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.util.Log
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),MyInterface {
+    override val prop: Int
+        get() = 456789
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +23,12 @@ class MainActivity : AppCompatActivity() {
 
         var list = listOf("1", "2", "3")
         forOrwhile(list,2)
+
+        seachString("1233456")
+        newClass()
+        foo()
+        propertyWithImplementation
+        Log.i("gzy", "$propertyWithImplementation")
     }
 
     // 定义函数
@@ -93,6 +101,24 @@ class MainActivity : AppCompatActivity() {
                 else -> Log.i("gzt","没有符合要求的条件")
             }
         }
+    }
+
+    // 遍历字符串
+    private fun seachString(tS:String){
+        for(s in tS.indices){
+            Log.i("gzy","current s = $s  target = ${tS[s]}")
+        }
+    }
+
+    // 构造类的构造方法
+    private fun newClass(){
+        val clss2 = class2("kotlin 类的构造函数")
+
+        val class3 = class3("通过 class 3 初始化class 2")
+    }
+
+    override fun foo() {
+        super.foo()
 
     }
 }
